@@ -12,10 +12,12 @@ $result = $connection->query($consult);
 
 if ($result -> num_rows) {
     $_SESSION['username'] = $username;
-    header("location:home.php");
+    header("location:views/home.php");
 } else {
-    include("index.php");
-    echo "<h1 class='alert'>ERROR EN LA AUTENTIFICACION</h1>";
+    echo "<div class='alert alert-danger' role='alert'>
+            Error de autentificacion, verifique sus credenciales.
+          </div>";
+    include("views/index.php");
 }
 
 $connection->close();

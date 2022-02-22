@@ -1,9 +1,3 @@
-<?php
-    include "../../utils/db.php";
-    $sql = "SELECT * FROM warehouse";
-    $warehouse = $connection->query($sql);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,13 +18,21 @@
         </div>
     </nav>
 
-    <?php
-
-    ?>
-
-<div class="container">
+    <div class="container">
         <div class="row">
             <div class="col">
+                <form action="/search" method="get" onkeydown="return event.key != 'Enter';">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Buscar un Equipo por Nombre</label>
+                        <input type="search" class="form-control" id="searchbar_user" name="username" autocomplete="false">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Buscar un Equipo por Usuario</label>
+                        <input type="search" class="form-control" id="searchbar_item" name="itemname" autocomplete="false">
+                    </div>
+                </form>
+
                 <table class="table">
                     <thead>
                         <tr>
@@ -43,40 +45,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
-                            if ($warehouse->num_rows > 0) {
-                                while($row = $warehouse->fetch_assoc()) {
-
-                                    $id = $row["id"];
-                                    $name = $row["name_pc"];
-                                    $employee = 'Ninguno';
-                                    $brand = $row["brand"];
-                                    $model = $row["model"];
-                                    $maintenance = $row["maintenance"];
-
-                                    //? This query is used for take the employee name
-                                    if (!is_null($row["employee_id"])) {
-                                        $sql = "SELECT * FROM employee WHERE id = " . $row["employee_id"];
-                                        $data = $connection->query($sql)->fetch_assoc();
-                                        $employee = $data["name"];
-                                    }
-                                    echo "
-                                        <tr>
-                                            <th scope='row'>$id</th>
-                                            <td>$name</td>
-                                            <td>$employee</td>
-                                            <td>$brand</td>
-                                            <td>$model</td>
-                                            <td>$maintenance</td>
-                                            <td>
-                                                <a class='btn btn-secondary' href='read_one.php?id=$id'>Ver mas datos</a> 
-                                                <a class='btn btn-warning' href='update.php?id=$id'>Editar</a> 
-                                                <a class='btn btn-danger' href='delete_one.php?id=$id'>Eliminar</a>
-                                            </td>
-                                        </tr>";
-                                }
-                            }
-                        ?>
                     </tbody>
                 </table>
 
@@ -84,6 +52,26 @@
             </div>
         </div>
     </div>
+
+    <script>
+        let inputItem = document.querySelector('#searchbar_item');
+        let inputUser = document.querySelector('#searchbar_user');
+
+
+        async function getData() {
+            let itemName = inputItem.value !== '' ?  'username=' + inputItem.value + '&' : '' ;
+            let userName = inputUser.value !== '' ? 'itemname=' + inputUser.value : '' ;
+
+            let response = await fetch('/pruebainventario/views/warehouse/search.php?' + itemName + userName );
+            let users = await response.text();
+            document.querySelector('tbody').innerHTML = users;
+        }
+        
+        window.onload = getData;
+        inputItem.addEventListener('input', async () => getData());
+        inputUser.addEventListener('input', async () => getData());
+
+    </script>
 
 </body>
 

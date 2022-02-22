@@ -26,15 +26,16 @@ $employee = $connection->query($sql);
 
 
 
-
     <div class="container">
         <div class="row">
             <div class="col">
 
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Buscar un Usuario</label>
-                    <input type="text" class="form-control" id="searchbar" name="username">
-                </div>
+                <form action="/search" method="get" onkeydown="return event.key != 'Enter';">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Buscar un Usuario</label>
+                        <input type="text" class="form-control" id="searchbar" name="username" autocomplete="off">
+                    </div>
+                </form>
 
                 <table class="table">
                     <thead>
@@ -46,34 +47,6 @@ $employee = $connection->query($sql);
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
-                        if ($employee->num_rows > 0) {
-                            while ($row = $employee->fetch_assoc()) {
-                                $id = $row["id"];
-                                $name = $row["name"];
-                                $department_id = $row["department_id"];
-                                $plant = $row["plant"];
-
-                                //? This query is used for take the employee name
-                                // if (!is_null($row["employee_id"])) {
-                                //     $sql = "SELECT * FROM employee WHERE id = " . $row["employee_id"];
-                                //     $data = $connection->query($sql)->fetch_assoc();
-                                //     $employee = $data["name"];
-                                echo "
-                                        <tr>
-                                            <th scope='row'>$id</th>
-                                            <td>$name</td>
-                                            <td>$department_id</td>
-                                            <td>$plant</td>
-                                            <td>
-                                                <a class='btn btn-secondary' href='read_one_user.php?id=$id'>Ver mas datos</a> 
-                                                <a class='btn btn-warning' href='update_user.php?id=$id'>Editar</a> 
-                                                <a class='btn btn-danger' href='delete_user.php?id=$id'>Eliminar</a>
-                                            </td>
-                                        </tr>";
-                            }
-                        }
-                        ?>
                     </tbody>
                 </table>
 
@@ -81,6 +54,24 @@ $employee = $connection->query($sql);
             </div>
         </div>
     </div>
+
+    <script>
+
+        var input = document.querySelector('#searchbar');
+
+
+        async function getData() {
+            let response = await fetch('/pruebainventario/views/employee/search.php?username=' + input.value);
+            let users = await response.text();
+            document.querySelector('tbody').innerHTML = users;
+        }
+
+
+
+        window.onload = getData()
+        input.addEventListener('input', () => getData());
+
+    </script>
 
 </body>
 

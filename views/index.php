@@ -17,7 +17,7 @@
 
                 <h1>El login más malote del mundo 😎😎</h1>
 
-                <form action="validate.php" method="post">
+                <form action="/pruebainventario/validate.php" method="post">
 
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Nombre de Usuario</label>
