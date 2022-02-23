@@ -14,7 +14,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="../home.php">El inventario más malote 😈🥵🤑</a>
+            <a class="navbar-brand" href="../home.php">Inventario IT</a>
         </div>
     </nav>
 

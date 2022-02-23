@@ -23,7 +23,7 @@ $employee = $connection->query($sql);
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.php">Usuarios</a>
+            <a class="navbar-brand" href="index.php">Usuarios de equipos</a>
         </div>
     </nav>
 
@@ -41,14 +41,17 @@ $employee = $connection->query($sql);
                                 $department_id = $row["department_id"];
                                 $plant = $row["plant"];
 
-                            }
+                                $sql = "SELECT name FROM department WHERE id=$department_id";
+                                $department = $connection->query($sql)->fetch_assoc()['name'];
                             echo "
                                         <tr>
                                             <th scope='row'>$id</th>
                                             <td>$name</td>
-                                            <td>$department_id</td>
+                                            <td>$department</td>
                                             <td>$plant</td>
                                         </tr>";
+                            }
+                            
                         }
 
 

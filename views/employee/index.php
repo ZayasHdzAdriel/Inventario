@@ -20,7 +20,7 @@ $employee = $connection->query($sql);
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="../home.php">Los usuarios más malotes 😈🥵🤑</a>
+            <a class="navbar-brand" href="../home.php">Usuarios de equipos</a>
         </div>
     </nav>
 

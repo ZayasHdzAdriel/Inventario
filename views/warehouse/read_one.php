@@ -23,7 +23,7 @@ $warehouse = $connection->query($sql);
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.php">Inventario</a>
+            <a class="navbar-brand" href="index.php">Inventario IT</a>
         </div>
     </nav>
 

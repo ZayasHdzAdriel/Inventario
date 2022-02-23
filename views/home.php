@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col">
 
-                <h1>El home más malote del mundo 😎😎</h1>
+                <h1>Inicio</h1>
 
                 <form action="validate.php" method="post">
 

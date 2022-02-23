@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.php">El inventario más malote 😈🥵🤑</a>
+            <a class="navbar-brand" href="index.php">Inventario IT</a>
         </div>
     </nav>
 

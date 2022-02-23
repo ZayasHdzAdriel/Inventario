@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col">
 
-                <h1>El login más malote del mundo 😎😎</h1>
+                <h1>Inicio de Sesión</h1>
 
                 <form action="/pruebainventario/validate.php" method="post">
 
