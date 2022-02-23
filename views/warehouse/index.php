@@ -49,6 +49,7 @@
                 </table>
 
                 <a class="btn btn-primary float-end m-4 ps-3 pe-3" href="create.php">Ingresar nuevo objecto</a>
+                <a class="btn btn-secondary float-end m-4 ps-3 pe-3" href="/inventario/utils/excel_document.php">Generar Documento Excel</a>
             </div>
         </div>
     </div>
