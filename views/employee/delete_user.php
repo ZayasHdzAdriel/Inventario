@@ -42,11 +42,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="row pt-3">
             <div class="col">
 
-                <img src="https://c.tenor.com/L4p2V-qKKJQAAAAd/neco-arc-erection.gif">
-                <h1>Serious? 😭😭😭</h1>
-
                 <div class="card">
-                    <h1 class="card-title text-center">¿Esta seguro de querer eliminar el registro?</h5>
+                    <h1 class="card-title text-center">¿Está seguro de querer eliminar el registro?</h5>
                         <div class="card-body">
                             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) . "?id=$id"; ?>" method="post">
                                 <div class="d-grid gap-2 pt-4">
